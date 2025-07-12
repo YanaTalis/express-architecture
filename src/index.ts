@@ -5,6 +5,8 @@ import { OrdersController } from "./modules/orders/orders.controller";
 import { OrdersService } from "./modules/orders/orders.service";
 import { UsersController } from "./modules/users/users.controller";
 import { UsersService } from "./modules/users/users.service";
+import { CategoryService } from "./modules/categories/category.service";
+import { CategoryController } from "./modules/categories/category.controller";
 import type { Controller } from "./types/controller";
 
 import { CryptoService } from "./services/crypto/crypto.service"
@@ -17,10 +19,12 @@ app.listen(3000, () => console.log("Server is running on port 3000"));
 
 const ordersService = new OrdersService();
 const usersService = new UsersService();
+const categoryService = new CategoryService();
 
 const controllers: Controller[] = [
   new UsersController(usersService),
   new OrdersController(ordersService),
+  new CategoryController(categoryService),
 ];
 
 controllers.forEach((controller) =>
